@@ -308,5 +308,5 @@ STR2OPS = {
 ```
 
 Experiments results are as follows:
-![mbv3](MobileNetV3/exp_result.png)
+![mbv3](MobileNet-V3/exp_result.png)
 
