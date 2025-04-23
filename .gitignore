@@ -1,0 +1,6 @@
+venv/
+nasbench.egg-info/
+*.pyc
+__pycache__/
+nasbench_full.tfrecord
+nasbench_only108.tfrecord
