@@ -4,13 +4,13 @@ import os
 import random
 import warnings
 import numpy as np
-
-warnings.filterwarnings("ignore")
 from config.config import (
     hyper_params_setting,
 )
 from evo_diff import evo_diff
 from utils.nb101_api import get_nb101_api
+
+warnings.filterwarnings("ignore")
 
 
 def set_random_seed(seed):
