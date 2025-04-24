@@ -144,7 +144,7 @@ Before experiments, download following 11 dataset files.
 <h4 style="color:gray">Install</h4>
 
 ```
-cd NAS-Bench-201_SearchSapce
+cd NAS-Bench-201
 conda create -n evo_diff python=3.12.2
 pip install -r requirements.txt
 ```
