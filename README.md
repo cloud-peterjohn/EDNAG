@@ -1,5 +1,5 @@
 # EvoDiff
-This repository contains the code for the paper "Evolution Meets Diffusion: Efficient Neural Architecture Generation". 
+This repository contains the code for the paper "**Evolution Meets Diffusion: Efficient Neural Architecture Generation**". 
 
 ## Overview
 ![overview](method_overview.png)
