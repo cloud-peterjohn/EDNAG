@@ -1,4 +1,4 @@
-# EvoDiff
+# EDNAG: **E**volutionary **D**iffusion-based **N**eural **A**rchitecture **G**eneration
 This repository contains the code for the paper "**Evolution Meets Diffusion: Efficient Neural Architecture Generation**". 
 
 ## Overview
