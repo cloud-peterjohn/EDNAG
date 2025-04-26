@@ -1,6 +1,5 @@
-# EDNAG: **E**volutionary **D**iffusion-based **N**eural **A**rchitecture **G**eneration
-# EDNAG: <b>E</b>volutionary <b>D</b>iffusion-based <b>N</b>eural <b>A</b>rchitecture <b>G</b>eneration
-This repository contains the code for the paper "**Evolution Meets Diffusion: Efficient Neural Architecture Generation**". 
+# EDNAG
+This repository contains the code for the paper "Evolution Meets Diffusion: Efficient Neural Architecture Generation" (EDNAG: **E**volutionary **D**iffusion-based **N**eural **A**rchitecture **G**eneration). 
 
 ## Overview
 ![overview](method_overview.png)
