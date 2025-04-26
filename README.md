@@ -14,7 +14,7 @@ Neural Architecture Search (NAS) has gained widespread attention for its transfo
 #### Code Architectures
 Using the code for NAS-Bench-201 search space as an example:
 - `main.py`: The entry point of the program, which parses arguments and calls `experiments.py`.
-- `experiments.py`: The pipeline for experiments, setting random seeds and providing the workflow for generation-get_topk_archs-evaluate_archs.
+- `experiments.py`: The pipeline for experiments, setting random seeds and providing the workflow for `generation`-`get_topk_archs`-`evaluate_archs`.
 - `evo_diff.py`: Neural architecture generation, implementing the pipeline of the Fitness-guided Denoising (FD) Strategy.
 - `ddim.py` and `predictor.py`: DDIM denoising process in the FD strategy.
 - `corrector.py`: Selection-based optimization strategy in EDNAG.
