@@ -12,6 +12,78 @@ Neural Architecture Search (NAS) has gained widespread attention for its transfo
 
 ## Code Snippets
 #### Code Architectures
+```
+EDNAG
+├─MobileNet-V3
+│  ├─eval_architecture
+│  │  ├─datasets
+│  │  ├─manual_eval
+│  │  └─ofa
+│  │      ├─elastic_nn
+│  │      │  ├─modules
+│  │      │  └─networks
+│  │      ├─networks
+│  │      ├─sub_net
+│  │      └─utils
+│  ├─evo_diff
+│  ├─meta_predictor
+│  │  ├─checkpoints
+│  │  └─set_encoder
+│  │      └─coreset
+│  └─search_space
+│      └─models
+├─NAS-Bench-101
+│  ├─config
+│  ├─nasbench
+│  │  ├─images
+│  │  └─nasbench
+│  │      ├─lib
+│  │      ├─scripts
+│  │      └─tests
+│  ├─network
+│  │  ├─cell_infers
+│  │  ├─cell_searchs
+│  │  ├─shape_infers
+│  │  └─shape_searchs
+│  └─utils
+├─NAS-Bench-201
+│  ├─config
+│  ├─meta_acc_predictor
+│  │  ├─data
+│  │  │  └─meta_predictor_dataset
+│  │  └─set_encoder
+│  ├─nas_201_api
+│  ├─network
+│  │  ├─cell_infers
+│  │  ├─cell_searchs
+│  │  ├─shape_infers
+│  │  └─shape_searchs
+│  └─utils
+└─TransNASBench-101
+    ├─config
+    ├─meta_acc_predictor
+    │  └─set_encoder
+    ├─network
+    │  ├─cell_infers
+    │  ├─cell_searchs
+    │  ├─shape_infers
+    │  └─shape_searchs
+    ├─TransNASBench101
+    │  ├─api
+    │  ├─lib
+    │  │  ├─data
+    │  │  ├─log_utils
+    │  │  ├─losses
+    │  │  ├─models
+    │  │  │  ├─net_infer
+    │  │  │  ├─net_ops
+    │  │  │  └─task_models
+    │  │  ├─optimizers
+    │  │  └─procedures
+    │  ├─scripts
+    │  └─tools
+    └─utils
+```
 Using the code for NAS-Bench-201 search space as an example:
 - `main.py`: The entry point of the program, which parses arguments and calls `experiments.py`.
 - `experiments.py`: The pipeline for experiments, setting random seeds and providing the workflow for `generation`-`get_topk_archs`-`evaluate_archs`.
