@@ -11,6 +11,22 @@ Neural Architecture Search (NAS) has gained widespread attention for its transfo
 - You can find the appendix [here](appendix.pdf).
 
 ## Code Snippets
+#### Code Architectures
+Using the NAS-Bench-201 search space as an example:
+- `main.py`: The entry point of the program, which parses arguments and calls `experiments.py`.
+- `experiments.py`: The pipeline for experiments, setting random seeds and providing the workflow for generation-get_topk_archs-evaluate_archs.
+- `evo_diff.py`: Neural architecture generation, implementing the pipeline of the Fitness-guided Denoising (FD) Strategy.
+- `ddim.py` and `predictor.py`: DDIM denoising process in the FD strategy.
+- `corrector.py`: Selection-based optimization strategy in EDNAG.
+- `mapping.py`: Definition and implementation of Fitness-to-Probability Mapping functions.
+- `analyse.py`: Conversion between two neural architecture representations, matrix and string.
+- `meta_fitness.py`: Fitness evaluation by a dataset-aware meta neural predictor.
+- `coreset.py`: Core dataset image selection for the neural predictor.
+- `nb201_fitness.py`: Get architecture accuracy by querying the NAS-Bench-201 benchmark table.
+- `eval_arch.py`: Evaluate architectures by training and testing.
+- `config.py`: Configurations for experiment parameters and random seeds.
+  
+#### Detailed Explaination
 Step-by-step denoising iterations in the code.
 ```python
 scheduler = DDIMSchedulerCosine(num_step=100)
