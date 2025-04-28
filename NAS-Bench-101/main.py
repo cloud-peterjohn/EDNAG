@@ -30,7 +30,6 @@ def main_exp():
     seed_list = args["seed"]
 
     for seed in seed_list:
-        # 复现最佳结果
         set_random_seed(seed)
         max_acc, duration, _ = evo_diff(
             nb_api=nb_api,
