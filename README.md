@@ -15,7 +15,534 @@ Neural Architecture Search (NAS) has gained widespread attention for its transfo
 #### Code Architectures
 ```
 EDNAG
-
+|   .gitignore
+|   appendix.pdf
+|   Denoise.png
+|   LICENSE
+|   method_overview.png
+|   README.md
+|   requirements.txt
+|
++---MobileNet-V3
+|   |   arguments_parser.py
+|   |   experiment.py
+|   |   exp_result.png
+|   |   main.py
+|   |
+|   +---eval_architecture
+|   |   |   evaluator.py
+|   |   |   eval_archs.py
+|   |   |   top_arch.py
+|   |   |
+|   |   +---datasets
+|   |   |       autoaugment copy.py
+|   |   |       autoaugment.py
+|   |   |       download_datasets.py
+|   |   |       get_datasets.py
+|   |   |       __init__.py
+|   |   |
+|   |   +---manual_eval
+|   |   |       manual_eval.py
+|   |   |
+|   |   \---ofa
+|   |       +---elastic_nn
+|   |       |   |   utils.py
+|   |       |   |   __init__.py
+|   |       |   |
+|   |       |   +---modules
+|   |       |   |       dynamic_layers.py
+|   |       |   |       dynamic_op.py
+|   |       |   |       __init__.py
+|   |       |   |
+|   |       |   \---networks
+|   |       |           ofa_mbv3.py
+|   |       |           ofa_proxyless.py
+|   |       |           ofa_resnets.py
+|   |       |           __init__.py
+|   |       |
+|   |       +---networks
+|   |       |       mobilenet_v3.py
+|   |       |       proxyless_nets.py
+|   |       |       resnets.py
+|   |       |       __init__.py
+|   |       |
+|   |       +---sub_net
+|   |       |       nsga_net_v2.py
+|   |       |       ofa_net.py
+|   |       |       set_subnet_arch.py
+|   |       |       __init__.py
+|   |       |
+|   |       \---utils
+|   |               common_tools.py
+|   |               flops_counter.py
+|   |               layers.py
+|   |               my_modules.py
+|   |               pytorch_modules.py
+|   |               pytorch_utils.py
+|   |               __init__.py
+|   |
+|   +---evo_diff
+|   |       corrector.py
+|   |       ddim.py
+|   |       evo_diffusion.py
+|   |       fitness.py
+|   |       flop_benchmark.py
+|   |       mapping.py
+|   |       plot.py
+|   |       predictor.py
+|   |       seed_config.py
+|   |       utils.py
+|   |       __init__.py
+|   |
+|   +---meta_predictor
+|   |   |   accurancy_predictor copy.py
+|   |   |   accurancy_predictor.py
+|   |   |   meta_dataset.py
+|   |   |   meta_train.py
+|   |   |   models.py
+|   |   |   __init__.py
+|   |   |
+|   |   +---checkpoints
+|   |   |       ckpt_max_corr.pt
+|   |   |
+|   |   \---set_encoder
+|   |       |   setenc_models.py
+|   |       |   setenc_modules.py
+|   |       |   __init__.py
+|   |       |
+|   |       \---coreset
+|   |               coreset_strategy.py
+|   |
+|   \---search_space
+|       |   get_network.py
+|       |   mobilenet_v3.py
+|       |   network_config.py
+|       |   searchspace_utils.py
+|       |   __init__.py
+|       |
+|       \---models
+|               common_tools.py
+|               flops_counter.py
+|               layers.py
+|               my_modules.py
+|               pytorch_modules.py
+|               pytorch_utils.py
+|               __init__.py
+|
++---NAS-Bench-101
+|   |   evo_diff.py
+|   |   exp_result.png
+|   |   main.py
+|   |
+|   +---config
+|   |       config.py
+|   |
+|   +---nasbench
+|   |   |   LICENSE
+|   |   |   NASBench.ipynb
+|   |   |   README.md
+|   |   |   setup.py
+|   |   |
+|   |   +---images
+|   |   |       architecture.png
+|   |   |       param_time_acc.png
+|   |   |
+|   |   \---nasbench
+|   |       |   api.py
+|   |       |   __init__.py
+|   |       |
+|   |       +---lib
+|   |       |       base_ops.py
+|   |       |       cifar.py
+|   |       |       config.py
+|   |       |       evaluate.py
+|   |       |       graph_util.py
+|   |       |       model_builder.py
+|   |       |       model_metrics.proto
+|   |       |       model_metrics_pb2.py
+|   |       |       model_spec.py
+|   |       |       training_time.py
+|   |       |       __init__.py
+|   |       |
+|   |       +---scripts
+|   |       |       augment_model.py
+|   |       |       generate_cifar10_tfrecords.py
+|   |       |       generate_graphs.py
+|   |       |       run_evaluation.py
+|   |       |       __init__.py
+|   |       |
+|   |       \---tests
+|   |               graph_util_test.py
+|   |               model_builder_test.py
+|   |               model_spec_test.py
+|   |               run_evaluation_test.py
+|   |
+|   +---network
+|   |   |   cell_operations.py
+|   |   |   CifarDenseNet.py
+|   |   |   CifarResNet.py
+|   |   |   CifarWideResNet.py
+|   |   |   clone_weights.py
+|   |   |   ImageNet_MobileNetV2.py
+|   |   |   ImageNet_ResNet.py
+|   |   |   initialization.py
+|   |   |   SharedUtils.py
+|   |   |   __init__.py
+|   |   |
+|   |   +---cell_infers
+|   |   |       cells.py
+|   |   |       nasnet_cifar.py
+|   |   |       tiny_network.py
+|   |   |       __init__.py
+|   |   |
+|   |   +---cell_searchs
+|   |   |       genotypes.py
+|   |   |       rank_model.py
+|   |   |       search_cells.py
+|   |   |       search_model_darts.py
+|   |   |       search_model_darts_nasnet.py
+|   |   |       search_model_enas.py
+|   |   |       search_model_enas_utils.py
+|   |   |       search_model_gdas.py
+|   |   |       search_model_gdas_nasnet.py
+|   |   |       search_model_pcdarts.py
+|   |   |       search_model_random.py
+|   |   |       search_model_setn.py
+|   |   |       search_model_setn_nasnet.py
+|   |   |       search_model_splitted_darts.py
+|   |   |       splitted_search_cells.py
+|   |   |       _test_module.py
+|   |   |       __init__.py
+|   |   |
+|   |   +---shape_infers
+|   |   |       InferCifarResNet.py
+|   |   |       InferCifarResNet_depth.py
+|   |   |       InferCifarResNet_width.py
+|   |   |       InferImagenetResNet.py
+|   |   |       InferMobileNetV2.py
+|   |   |       InferTinyCellNet.py
+|   |   |       shared_utils.py
+|   |   |       __init__.py
+|   |   |
+|   |   \---shape_searchs
+|   |           SearchCifarResNet.py
+|   |           SearchCifarResNet_depth.py
+|   |           SearchCifarResNet_width.py
+|   |           SearchImagenetResNet.py
+|   |           SearchSimResNet_width.py
+|   |           SoftSelect.py
+|   |           test.py
+|   |           __init__.py
+|   |
+|   \---utils
+|           analyse.py
+|           corrector.py
+|           ddim.py
+|           flop_benchmark.py
+|           mapping.py
+|           nb101_api.py
+|           nb101_fitness.py
+|           optimizers.py
+|           plot.py
+|           predictor.py
+|           __init__.py
+|
++---NAS-Bench-201
+|   |   evo_diff.py
+|   |   experiments.py
+|   |   exp_result.png
+|   |   main.py
+|   |
+|   +---config
+|   |       config.py
+|   |
+|   +---meta_acc_predictor
+|   |   |   download_datasets.py
+|   |   |   get_datasets.py
+|   |   |   meta_train.py
+|   |   |   unnoised_checkpoint.pth.tar
+|   |   |   unnoised_model.py
+|   |   |   __init__.py
+|   |   |
+|   |   +---data
+|   |   |   |   nasbench201.pt
+|   |   |   |
+|   |   |   \---meta_predictor_dataset
+|   |   |           aircraftbylabel.pt
+|   |   |           cifar100bylabel.pt
+|   |   |           cifar10bylabel.pt
+|   |   |           meta_train_tasks_predictor.pt
+|   |   |           meta_train_tasks_predictor_idx.pt
+|   |   |           meta_train_task_lst.pt
+|   |   |           petsbylabel.pt
+|   |   |
+|   |   \---set_encoder
+|   |           setenc_models.py
+|   |           setenc_modules.py
+|   |           __init__.py
+|   |
+|   +---nas_201_api
+|   |       api_201.py
+|   |       api_utils.py
+|   |       README.md
+|   |       __init__.py
+|   |
+|   +---network
+|   |   |   cell_operations.py
+|   |   |   CifarDenseNet.py
+|   |   |   CifarResNet.py
+|   |   |   CifarWideResNet.py
+|   |   |   clone_weights.py
+|   |   |   ImageNet_MobileNetV2.py
+|   |   |   ImageNet_ResNet.py
+|   |   |   initialization.py
+|   |   |   SharedUtils.py
+|   |   |   __init__.py
+|   |   |
+|   |   +---cell_infers
+|   |   |       cells.py
+|   |   |       nasnet_cifar.py
+|   |   |       tiny_network.py
+|   |   |       __init__.py
+|   |   |
+|   |   +---cell_searchs
+|   |   |       genotypes.py
+|   |   |       rank_model.py
+|   |   |       search_cells.py
+|   |   |       search_model_darts.py
+|   |   |       search_model_darts_nasnet.py
+|   |   |       search_model_enas.py
+|   |   |       search_model_enas_utils.py
+|   |   |       search_model_gdas.py
+|   |   |       search_model_gdas_nasnet.py
+|   |   |       search_model_pcdarts.py
+|   |   |       search_model_random.py
+|   |   |       search_model_setn.py
+|   |   |       search_model_setn_nasnet.py
+|   |   |       search_model_splitted_darts.py
+|   |   |       splitted_search_cells.py
+|   |   |       _test_module.py
+|   |   |       __init__.py
+|   |   |
+|   |   +---shape_infers
+|   |   |       InferCifarResNet.py
+|   |   |       InferCifarResNet_depth.py
+|   |   |       InferCifarResNet_width.py
+|   |   |       InferImagenetResNet.py
+|   |   |       InferMobileNetV2.py
+|   |   |       InferTinyCellNet.py
+|   |   |       shared_utils.py
+|   |   |       __init__.py
+|   |   |
+|   |   \---shape_searchs
+|   |           SearchCifarResNet.py
+|   |           SearchCifarResNet_depth.py
+|   |           SearchCifarResNet_width.py
+|   |           SearchImagenetResNet.py
+|   |           SearchSimResNet_width.py
+|   |           SoftSelect.py
+|   |           test.py
+|   |           __init__.py
+|   |
+|   \---utils
+|           analyse.py
+|           coreset.py
+|           corrector.py
+|           ddim.py
+|           eval_arch.py
+|           flop_benchmark.py
+|           mapping.py
+|           meta_d2a.py
+|           meta_fitness.py
+|           nb201_fitness.py
+|           optimizers.py
+|           plot.py
+|           predictor.py
+|           __init__.py
+|
++---NAS-Bench-301
+|   |   evo_diff.py
+|   |   main.py
+|   |   zc_nasbench301.json
+|   |
+|   +---config
+|   |       config.py
+|   |
+|   \---utils
+|           corrector.py
+|           ddim.py
+|           fitness.py
+|           mapping.py
+|           NB301.py
+|           optimizers.py
+|           plot.py
+|           predictor.py
+|           __init__.py
+|
+\---TransNASBench-101
+    |   evo_diff.py
+    |   experiments.py
+    |   exp_result.png
+    |   main.py
+    |
+    +---config
+    |       config.py
+    |
+    +---meta_acc_predictor
+    |   |   download_datasets.py
+    |   |   get_datasets.py
+    |   |   meta_train.py
+    |   |   unnoised_model.py
+    |   |   __init__.py
+    |   |
+    |   \---set_encoder
+    |           setenc_models.py
+    |           setenc_modules.py
+    |           __init__.py
+    |
+    +---network
+    |   |   cell_operations.py
+    |   |   CifarDenseNet.py
+    |   |   CifarResNet.py
+    |   |   CifarWideResNet.py
+    |   |   clone_weights.py
+    |   |   ImageNet_MobileNetV2.py
+    |   |   ImageNet_ResNet.py
+    |   |   initialization.py
+    |   |   SharedUtils.py
+    |   |   __init__.py
+    |   |
+    |   +---cell_infers
+    |   |       cells.py
+    |   |       nasnet_cifar.py
+    |   |       tiny_network.py
+    |   |       __init__.py
+    |   |
+    |   +---cell_searchs
+    |   |       genotypes.py
+    |   |       rank_model.py
+    |   |       search_cells.py
+    |   |       search_model_darts.py
+    |   |       search_model_darts_nasnet.py
+    |   |       search_model_enas.py
+    |   |       search_model_enas_utils.py
+    |   |       search_model_gdas.py
+    |   |       search_model_gdas_nasnet.py
+    |   |       search_model_pcdarts.py
+    |   |       search_model_random.py
+    |   |       search_model_setn.py
+    |   |       search_model_setn_nasnet.py
+    |   |       search_model_splitted_darts.py
+    |   |       splitted_search_cells.py
+    |   |       _test_module.py
+    |   |       __init__.py
+    |   |
+    |   +---shape_infers
+    |   |       InferCifarResNet.py
+    |   |       InferCifarResNet_depth.py
+    |   |       InferCifarResNet_width.py
+    |   |       InferImagenetResNet.py
+    |   |       InferMobileNetV2.py
+    |   |       InferTinyCellNet.py
+    |   |       shared_utils.py
+    |   |       __init__.py
+    |   |
+    |   \---shape_searchs
+    |           SearchCifarResNet.py
+    |           SearchCifarResNet_depth.py
+    |           SearchCifarResNet_width.py
+    |           SearchImagenetResNet.py
+    |           SearchSimResNet_width.py
+    |           SoftSelect.py
+    |           test.py
+    |           __init__.py
+    |
+    +---TransNASBench101
+    |   |   .gitignore
+    |   |   LICENSE
+    |   |   README.md
+    |   |   __init__.py
+    |   |
+    |   +---api
+    |   |       api.py
+    |   |       example.py
+    |   |       __init__.py
+    |   |
+    |   +---lib
+    |   |   |   __init__.py
+    |   |   |
+    |   |   +---data
+    |   |   |       class_object_final5k.npy
+    |   |   |       class_object_idx.json
+    |   |   |       class_object_selected.npy
+    |   |   |       class_scene_final5k.npy
+    |   |   |       class_scene_names.json
+    |   |   |       class_scene_selected.npy
+    |   |   |       load_ops.py
+    |   |   |       permutations_hamming_max_1000.npy
+    |   |   |       synset.py
+    |   |   |       taskonomy_dataset.py
+    |   |   |       __init__.py
+    |   |   |
+    |   |   +---log_utils
+    |   |   |       logger.py
+    |   |   |       meters.py
+    |   |   |       model_db.py
+    |   |   |       __init__.py
+    |   |   |
+    |   |   +---losses
+    |   |   |       all.py
+    |   |   |       __init__.py
+    |   |   |
+    |   |   +---models
+    |   |   |   |   model_info.py
+    |   |   |   |   utils.py
+    |   |   |   |   __init__.py
+    |   |   |   |
+    |   |   |   +---net_infer
+    |   |   |   |       cell_micro.py
+    |   |   |   |       net_macro.py
+    |   |   |   |
+    |   |   |   +---net_ops
+    |   |   |   |       cell_ops.py
+    |   |   |   |       norm.py
+    |   |   |   |
+    |   |   |   \---task_models
+    |   |   |           decoder.py
+    |   |   |           discriminator.py
+    |   |   |           encoder.py
+    |   |   |           feedforward.py
+    |   |   |           gan.py
+    |   |   |           segmentation.py
+    |   |   |           siamese.py
+    |   |   |
+    |   |   +---optimizers
+    |   |   |       warmup.py
+    |   |   |
+    |   |   \---procedures
+    |   |           task_vis.py
+    |   |           __init__.py
+    |   |
+    |   +---scripts
+    |   |       train_a_net.sh
+    |   |
+    |   \---tools
+    |           get_model_info.py
+    |           main.py
+    |           utils.py
+    |
+    \---utils
+            analyse.py
+            corrector.py
+            ddim.py
+            eval_arch.py
+            flop_benchmark.py
+            mapping.py
+            optimizers.py
+            plot.py
+            predictor.py
+            transnasbench101_fitness.py
+            __init__.py
 ```
 Using the code for NAS-Bench-201 search space as an example:
 - `main.py`: The entry point of the program, which parses arguments and calls `experiments.py`.
