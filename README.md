@@ -9,7 +9,6 @@ Neural Architecture Search (NAS) has gained widespread attention for its transfo
 ![Denoise](Denoise.png)
 
 - You can find the paper [here](https://arxiv.org/abs/2504.17827).
-- You can find the appendix [here](appendix.pdf).
 
 ## Code Snippets
 Using the code for NAS-Bench-201 search space as an example:
