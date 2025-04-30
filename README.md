@@ -166,6 +166,8 @@ conda create -n evo_diff python=3.12.2
 pip install -r requirements.txt
 ```
 
+Note: If you use PyTorch >= 2.6, you should add `weights_only=False` for every `torch.load()`, because the default value of the `weights_only` argument in `torch.load` is changed from `False` to `True` in PyTorch 2.6. 
+
 <h4 style="color:gray">Reproduce the results</h4>
 
 ```
@@ -868,4 +870,4 @@ EDNAG
             __init__.py
 ```
 
-Note: If you use PyTorch >= 2.6, you should add `weights_only=False` for every `torch.load()`, because the default value of the `weights_only` argument in `torch.load` is changed from `False` to `True` in PyTorch 2.6. 
+
