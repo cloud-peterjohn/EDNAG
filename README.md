@@ -867,3 +867,5 @@ EDNAG
             transnasbench101_fitness.py
             __init__.py
 ```
+
+Note: If you use PyTorch >= 2.6, you should add `weights_only=False` for every `torch.load()`, because the default value of the `weights_only` argument in `torch.load` is changed from `False` to `True` in PyTorch 2.6. 
