@@ -1,6 +1,6 @@
 # EDNAG
-This repository contains the code for the paper "Evolution Meets Diffusion: Efficient Neural Architecture Generation" (EDNAG: **E**volutionary **D**iffusion-based **N**eural **A**rchitecture **G**eneration). 
-Visits    
+This repository contains the code for the paper "Evolution Meets Diffusion: Efficient Neural Architecture Generation" (EDNAG: **E**volutionary **D**iffusion-based **N**eural **A**rchitecture **G**eneration).         
+Visits:  
 ![Visitor Count](https://profile-counter.glitch.me/cloud-zhoubingye-ednag/count.svg)
 ## Overview
 ![overview](method_overview.png)
